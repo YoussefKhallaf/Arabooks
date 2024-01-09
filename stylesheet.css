@@ -1,0 +1,149 @@
+.home-nav {
+    display: flex;
+    flex-direction: column;
+    background: rgb(158, 7, 7);
+    background: linear-gradient(30deg, rgba(158, 7, 7, 1) 0%, rgba(255, 248, 204, 1) 100%);
+    min-width: 100%;
+    align-items: center;
+}
+
+body {
+    margin: 0;
+    background-color: #e5e5d6;
+}
+
+.book-nav {
+    margin-top: 0;
+    background: rgb(158, 7, 7);
+    background: linear-gradient(30deg, rgba(158, 7, 7, 1) 0%, rgba(255, 248, 204, 1) 100%);
+}
+
+.book-nav-contents {
+    font-display: flex;
+    margin-top: 0;
+}
+
+.header-list {
+    display: flex;
+    list-style: none;
+    padding-left: 10px;
+    justify-content: space-between;
+}
+
+li {
+    list-style: none;
+}
+
+.homepageLogo {
+    height: 200px;
+}
+
+#bookpageLogo {
+    height: 70px;
+}
+
+.book-nav-contents {
+    display: flex;
+    padding: 0;
+}
+
+#search-bar {
+    border: none;
+    outline: none;
+    width: 500px
+}
+
+#smallLogo {
+    height: 30px;
+}
+
+.signinPage {
+    display: flex;
+    justify-content: center;
+}
+
+.signinWrap {
+    padding: 16px;
+    display: flex;
+    align-items: center;
+}
+
+.nav-button {
+    background-color: Transparent;
+    border: none;
+}
+
+.nav-contents {
+    display: flex;
+}
+
+a {
+    color: rgba(252, 220, 39, 0.89);
+    text-decoration: none;
+}
+
+.nav-buttons {
+    box-shadow: #f1e0934d;
+    background: linear-gradient(to bottom, #e0857f 5%, #eb675e8c 100%);
+    border-radius: 12px;
+    border: transparent;
+    text-decoration: none;
+    text-shadow: 0px 1px 0px #b23e35;
+    padding: 10px;
+    color: white;
+    background-color: Transparent;
+    border: none;
+}
+
+.header-foot {
+    display: flex;
+    font-style: oblique;
+    justify-content: center;
+    background: linear-gradient(30deg, rgba(158, 7, 7, 1) 0%, rgba(255, 248, 204, 1) 100%);
+}
+
+.foot-li {
+    display: flex;
+    align-items: stretch;
+}
+
+.book-results {
+    display: flex;
+}
+
+.book-grid {
+    margin: 20px;
+    padding: 20px;
+    color: white;
+    background: rgb(158, 7, 7);
+    background: linear-gradient(30deg, rgba(158, 7, 7, 1) 0%, rgba(255, 248, 204, 1) 100%);
+}
+
+.title {
+    font-weight: bold;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.container {
+    background-color: rgb(212, 210, 184, 0.5);
+    color: rgb(131, 125, 94);
+    margin: 10px;
+}
+
+label {
+    margin: 10px;
+}
+
+header {
+    margin-top: 20px;
+    margin-left: 50%;
+    color: darkolivegreen;
+    font-weight: bold;
+    font-size: large;
+}
+
+#advSearchForm {
+    display: flex;
+    margin: 20px;
+    flex-direction: column;
+}

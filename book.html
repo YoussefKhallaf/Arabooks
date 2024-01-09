@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="stylesheet.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arabooks</title>
+</head>
+
+<body>
+    <div class="book-nav">
+        <nav class="home-nav">
+            <div>
+                <ul class="header-list">
+                    <li><img class="homepageLogo" src="images/iqraa.jpeg" /></li>
+                </ul>
+            </div>
+            <div class="center-nav">
+                <div>
+                    <form action="search.html">
+                        <input type="search" name="q" id="search-bar" placeholder="Search by keyword, author or ISBN" />
+                    </form>
+                </div>
+
+                <button class='nav-button'><img src="images/search.png" alt=""></button>
+
+
+            </div>
+            <div class="right-nav">
+                <ul class="header-list">
+                    <li><button class="nav-buttons">Sign In</button></li>
+                    <li><button class="nav-buttons">My Account</button></li>
+                    <li><button class="nav-buttons">Basket</button></li>
+                    <li><button class="nav-buttons">Help</button></li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+
+    <div id="book-result">
+        <template id="book-details">
+            <div id="book-grid">
+                <ul id="book-grid-contents">
+                    <div>
+                        <li id="searchList"><div class="title">Title:</div><a class="title-text"></a></li>
+                        <br>
+                        <li id="searchList"><div class="title">Author:</div><a href="https://en.wikipedia.org/wiki/" target="_blank" class="author-text"></a></li>
+                        <br>
+                        <li><div><img class="book-image" src="" " alt="Book Cover "></div></li>
+                        <br>
+                        <li id="searchList"><div class="title">Publication Date:</div><span class="published-date"></span></li>
+                    </div>  
+                    <br>
+                    
+                   <li><div class="title">Description:</div><p><span class="description-text"></p></span></li>
+                   <li id="searchList"><div class="title">Rating:</div><span class="average-rating stars"></span></li>
+                </ul>
+            </div>
+
+         </template>
+    </div>
+    <script>
+        function getQuery() {
+
+            var queryString = window.location.search;
+            var query = {};
+            var pairs = (queryString[0] === '?' ? queryString.substr(1) : queryString).split('&');
+            for (var i = 0; i < pairs.length; i++) {
+                var pair = pairs[i].split('=');
+                query[decodeURIComponent(pair[0])] = decodeURIComponent(pair[1] || '');
+            }
+            return query;
+        }
+
+        function stars(n) {
+            let style = "";
+            for (let i = 0; i <= n; i++) {
+                style += "*";
+            }
+            return style;
+        }
+        var query = getQuery();
+        const container = document.getElementById("book-result");
+        const template = document.getElementById("book-details");
+
+        fetch('https://www.googleapis.com/books/v1/volumes/' + query['id'])
+            .then(response => response.json())
+            .then(function(book) {
+                console.log(book);
+                let newRow = template.content.cloneNode(true);
+                newRow.querySelector('.book-image').src = book.volumeInfo.imageLinks.smallThumbnail;
+                newRow.querySelector('.average-rating').innerText = stars(parseFloat(book.volumeInfo.averageRating));
+                newRow.querySelector('.title-text').innerText = book.volumeInfo.title;
+                newRow.querySelector('.author-text').innerText = book.volumeInfo.authors;
+                newRow.querySelector('.author-text').href = 'https://en.wikipedia.org/wiki/' + book.volumeInfo.authors;
+                newRow.querySelector('.published-date').innerText = book.volumeInfo.publishedDate;
+                newRow.querySelector('.description-text').innerHTML = book.volumeInfo.description;
+                container.appendChild(newRow);
+
+            });
+    </script>
+
+</body>
+
+</html>
